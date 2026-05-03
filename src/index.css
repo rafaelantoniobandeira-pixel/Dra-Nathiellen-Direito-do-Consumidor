@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "Source Sans 3", sans-serif;
+  
+  --color-navy: #0D1B2A;
+  --color-gold: #C9A84C;
+  --color-offwhite: #F8F9FA;
+}
+
+@layer base {
+  body {
+    @apply bg-offwhite text-navy font-sans antialiased scroll-smooth;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply py-24 md:py-32;
+  }
+  
+  .btn-gold {
+    @apply bg-gold text-navy px-8 py-3 font-semibold transition-all duration-300 hover:bg-gold/90 hover:scale-105 active:scale-95;
+  }
+
+  .btn-outline {
+    @apply border border-gold text-gold px-8 py-3 font-semibold transition-all duration-300 hover:bg-gold hover:text-navy;
+  }
+
+  .nav-link {
+    @apply relative py-2 transition-colors duration-300 hover:text-gold;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-px bg-gold transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+}
+
+.animate-fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.animate-fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
